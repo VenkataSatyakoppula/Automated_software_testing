@@ -5,10 +5,13 @@ import tkinter.font as TkFont
 from tkinter import filedialog
 import hello
 from tkinter import messagebox
+from Os_file_manipulation import Os_file_manipulation
 upload=""
 var = 0
+passvalues = Os_file_manipulation()
 class USERINTERFACE:  
-    def Gui(self,a):
+    @staticmethod
+    def Gui():
         root =Tk()
         root.geometry("900x800")
         root.resizable(width=False,height= False)
@@ -39,6 +42,9 @@ class USERINTERFACE:
             global qsimg
             # global case_entry
             #constants
+            file = open("testcases.txt","r+")
+            file.truncate(0)
+            file.close()
             def constants():
                 outputuploadBtn.destroy()
                 testcasesuploadBtn.destroy()
@@ -133,16 +139,21 @@ class USERINTERFACE:
             #button Generator
             def gtr():
                 try:
-                    int(case_entry.get())
+                    int(var.get())
                     constants()
                     #number = case_entry.get()
                     #hello.ghjk(number)
-                    print(var.get())  
-                    # hello.openFiless(upload)
-                    if(var.get()==1):
+                    # var.get()
+                    if(int(var.get())<=1000):
+                        passvalues.append_in_txt(var.get(),1)
                         successpage()
                     else:
                         tryAgain()
+                    # hello.openFiless(upload)
+                    # if(var.get()==1):
+                    #     successpage()
+                    # else:
+                    #     tryAgain()
                 except ValueError:
                     case_entry["fg"] = 'red'
                     messagebox.showerror("error","Please enter value Inputs")
