@@ -8,6 +8,7 @@ from tkinter import messagebox
 from Os_file_manipulation import Os_file_manipulation
 upload=""
 var = 0
+sts = 0
 passvalues = Os_file_manipulation()
 class USERINTERFACE:  
     @staticmethod
@@ -42,9 +43,6 @@ class USERINTERFACE:
             global qsimg
             # global case_entry
             #constants
-            file = open("testcases.txt","r+")
-            file.truncate(0)
-            file.close()
             def constants():
                 outputuploadBtn.destroy()
                 testcasesuploadBtn.destroy()
@@ -87,14 +85,18 @@ class USERINTERFACE:
             var = IntVar()
             case_entry = Entry(root,font=("Helvetica",17),width=20,fg='black',bd=0,textvariable =var)
             case_canvas = mycanvas.create_window(450,200,anchor=NW,window=case_entry,width=100)
-
+            
             #drop type
             types = ['INT', 'STR']
             def show(event):
+                global sts
                 mycanvas.create_text(200,200,fill='blue',font=("Blod",20) )
-
+                if droptype.get() == 'STR':
+                    sts = 1  
+                else:
+                    sts = 0 
             droptype= ttk.Combobox(root,value= types,state='readonly',font=("Blod",17),width=100)
-            droptype.current(0)
+            # droptype.current(0)
             droptype.bind("<<ComboboxSelected>>", show)
             mycanvas.create_window(200,250,anchor=NW,window=droptype,width=100)
             
@@ -145,7 +147,7 @@ class USERINTERFACE:
                     #hello.ghjk(number)
                     # var.get()
                     if(int(var.get())<=1000):
-                        passvalues.append_in_txt(var.get(),1)
+                        passvalues.append_in_txt(var.get(),sts)
                         successpage()
                     else:
                         tryAgain()

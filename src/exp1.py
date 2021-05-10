@@ -78,7 +78,8 @@ def frontPage():
     #drop type
     types = ['INT', 'STR']
     def show(event):
-        mycanvas.create_text(200,200,fill='blue',font=("Blod",20) )
+        mycanvas.create_text(200,200,fill='blue',font=("Blod",20))
+        
 
     droptype= ttk.Combobox(root,value= types,state='readonly',font=("Blod",17),width=100)
     droptype.current(0)
