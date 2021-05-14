@@ -3,10 +3,10 @@ from PIL import Image,ImageTk
 from tkinter import ttk
 import tkinter.font as TkFont
 from tkinter import filedialog
-import hello
 from tkinter import messagebox
 from Os_file_manipulation import Os_file_manipulation
-upload=""
+from Comparing_data import Compare
+code_upload=outputuploads=""
 var = 0
 sts = 0
 passvalues = Os_file_manipulation()
@@ -102,18 +102,16 @@ class USERINTERFACE:
             
             #button upload
             def upload():
-                global upload
+                global code_upload
                 #file location giver
                 root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
-                upload = root.filename
-                if upload == '':
+                code_upload = root.filename
+                if code_upload == '':
                     uploadBtn['fg'] = 'red'
                 else:
                     uploadBtn['fg'] = 'green'
             uploadBtn = Button(root, text='Upload',command=upload,font=("Blod",15),bd=1,fg='black')
             mycanvas.create_window(250,350,anchor=NW,window=uploadBtn,width=100)
-            
-
             #button upload for testcases
             def testcasesupload():
                 global testcasesuploads
@@ -131,6 +129,7 @@ class USERINTERFACE:
                 global outputuploads
                 root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
                 outputuploads =root.filename
+                print(outputuploads)
                 if outputuploads == '':
                     outputuploadBtn['fg'] = 'red'
                 else:
@@ -146,8 +145,12 @@ class USERINTERFACE:
                     #number = case_entry.get()
                     #hello.ghjk(number)
                     # var.get()
+                    print(code_upload)
                     if(int(var.get())<=1000):
                         passvalues.append_in_txt(var.get(),sts)
+                        passvalues.getpath(testcasesuploads,outputuploads)
+                        result = Compare()
+                        result.comparing_values()
                         successpage()
                     else:
                         tryAgain()
