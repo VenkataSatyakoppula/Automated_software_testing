@@ -6,7 +6,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from Os_file_manipulation import Os_file_manipulation
 from Comparing_data import Compare
-code_upload=outputuploads=""
+code_upload=outputuploads=testcasesuploads=""
 var = 0
 sts = 0
 passvalues = Os_file_manipulation()
@@ -148,9 +148,10 @@ class USERINTERFACE:
                     print(code_upload)
                     if(int(var.get())<=1000):
                         passvalues.append_in_txt(var.get(),sts)
-                        passvalues.getpath(testcasesuploads,outputuploads)
-                        result = Compare()
-                        result.comparing_values()
+                        if testcasesuploads!="" and outputuploads!="":
+                            passvalues.getpath(testcasesuploads,outputuploads)
+                            result = Compare()
+                            result.comparing_values()
                         successpage()
                     else:
                         tryAgain()
