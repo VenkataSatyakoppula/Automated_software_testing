@@ -160,9 +160,13 @@ class USERINTERFACE:
                     #     successpage()
                     # else:
                     #     tryAgain()
-                except ValueError:
+                except TclError:
                     case_entry["fg"] = 'red'
-                    messagebox.showerror("error","Please enter value Inputs")
+                    data = messagebox.showerror("error","Please enter value Inputs")
+                    if data=="ok":
+                        case_entry["fg"] = 'black'
+                    
+                    
                     
                 #print("upload1")
                 #print("testcasesuploads")

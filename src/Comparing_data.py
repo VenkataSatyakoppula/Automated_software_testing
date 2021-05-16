@@ -9,8 +9,8 @@ class Compare(Os_file_manipulation):
         count =0
         while count<len(outputs):
             if(cus_outputs[count]==outputs[count]):
-                result.append(f"TESTCASE {count+1}: PASSED!")
+                result.append(f"TESTCASE {count+1}({cus_outputs[count]}=={outputs[count]}): PASSED!")
             else:
-                result.append(f"TESTCASE {count+1}: FAILED!") 
+                result.append(f"TESTCASE {count+1}({cus_outputs[count]}!={outputs[count]}): FAILED!") 
             count += 1
         Os_file_manipulation.test_result_in_txt(0,result)

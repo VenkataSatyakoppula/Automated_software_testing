@@ -26,6 +26,7 @@ class Os_file_manipulation(TestcasesGenerator):
         count=0
         temp.clear()
         if key==0:
+            # print(cls.cus_out_path)
             outputs = open(cls.cus_out_path,"r")
         elif key==1:
             outputs = open("outputs.txt","r")    
@@ -46,6 +47,8 @@ class Os_file_manipulation(TestcasesGenerator):
             for line in result:
                 testresult.write(str(line))
                 testresult.write("\n")
+            os.startfile("TestResult.txt")
+            testresult.close()
         else:
             pass
 
