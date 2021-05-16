@@ -10,7 +10,7 @@ class Os_file_manipulation(TestcasesGenerator):
     def append_in_txt(cls,limit,typee):
         cls.testcases = open("testcases.txt","w")
         print(typee)
-        cls.a= TestcasesGenerator.generate(limit,typee).copy()
+        cls.a= TestcasesGenerator.generate_random_values(limit,typee).copy()
         for line in cls.a:
             cls.testcases.write(str(line))
             cls.testcases.write("\n")

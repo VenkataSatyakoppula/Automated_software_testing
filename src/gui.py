@@ -5,7 +5,7 @@ import tkinter.font as TkFont
 from tkinter import filedialog
 from tkinter import messagebox
 from Os_file_manipulation import Os_file_manipulation
-from Comparing_data import Compare
+from Comparing_data import Comparing_values
 code_upload=outputuploads=testcasesuploads=""
 var = 0
 sts = 0
@@ -150,7 +150,7 @@ class USERINTERFACE:
                         passvalues.append_in_txt(var.get(),sts)
                         if testcasesuploads!="" and outputuploads!="":
                             passvalues.getpath(testcasesuploads,outputuploads)
-                            result = Compare()
+                            result = Comparing_values()
                             result.comparing_values()
                         successpage()
                     else:
