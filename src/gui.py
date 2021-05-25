@@ -143,11 +143,7 @@ class USERINTERFACE:
                 try:
                     int(var.get())
                     constants()
-                    #number = case_entry.get()
-                    #hello.ghjk(number)
-                    # var.get()
-                    print(code_upload)
-                    if(int(var.get())<=1000):
+                    if(int(var.get())<=1000 and int(var.get())>0):
                         if code_upload !="":
                             Automation_of_code.get_code_path(code_upload)
                             passvalues.append_in_txt(var.get(),sts)
@@ -159,6 +155,7 @@ class USERINTERFACE:
                             passvalues.getpath(testcasesuploads,outputuploads)
                             result = Comparing_values()
                             result.comparing_values()
+                        Automation_of_code.execute_code(2)
                         successpage()
                     else:
                         tryAgain()
