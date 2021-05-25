@@ -6,6 +6,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from Os_file_manipulation import Os_file_manipulation
 from Comparing_data import Comparing_values
+from Automation_of_code import Automation_of_code
 code_upload=outputuploads=testcasesuploads=""
 var = 0
 sts = 0
@@ -147,7 +148,13 @@ class USERINTERFACE:
                     # var.get()
                     print(code_upload)
                     if(int(var.get())<=1000):
-                        passvalues.append_in_txt(var.get(),sts)
+                        if code_upload !="":
+                            Automation_of_code.get_code_path(code_upload)
+                            passvalues.append_in_txt(var.get(),sts)
+                        else:                       
+                            data = messagebox.showerror("Code Error","Please Upload The code")
+                            tryAgain()
+                            raise Exception("Code should be uploaded!!")
                         if testcasesuploads!="" and outputuploads!="":
                             passvalues.getpath(testcasesuploads,outputuploads)
                             result = Comparing_values()
@@ -162,7 +169,7 @@ class USERINTERFACE:
                     #     tryAgain()
                 except TclError:
                     case_entry["fg"] = 'red'
-                    data = messagebox.showerror("error","Please enter value Inputs")
+                    data = messagebox.showerror("Value Error","Please enter Number Inputs")
                     if data=="ok":
                         case_entry["fg"] = 'black'
                     
@@ -238,7 +245,7 @@ class USERINTERFACE:
             mycanvas.create_text(60,150,text= 'Welcome to the help page ' ,fill='black',font=("Blod",20),anchor=NW )
             mycanvas.create_text(60,200,text= 'FAQ' ,fill='black',font=("Blod",20),anchor=NW )
             mycanvas.create_text(60,250,text= 'Q-1)Can we choose any type of code?' ,fill='black',font=("Blod",20),anchor=NW )
-            mycanvas.create_text(60,300,text= 'A)yes, you can as long as code executes without errors' ,fill=anscolor,font=("Blod",20),anchor=NW )
+            mycanvas.create_text(60,300,text= 'A)yes,you can as long as code has single input' ,fill=anscolor,font=("Blod",20),anchor=NW )
             mycanvas.create_text(60,400,text= 'Q-2)Where can i find my code testcases and output?' ,fill='black',font=("Blod",20),anchor=NW )
             mycanvas.create_text(60,450,text= 'A)The testcases and outputs will be stored in a text file' ,fill=anscolor,font=("Blod",20),anchor=NW )
             mycanvas.create_text(60,500,text= 'which will be in same directory as this program' ,fill=anscolor,font=("Blod",20),anchor=NW )

@@ -11,5 +11,5 @@ class TestcasesGenerator():
             return cls.arr_result   
         else:
             for _ in range(0,Limit):
-                cls.arr_result.append(''.join(random.choices(string.ascii_letters, k = 6)))
+                cls.arr_result.append(''.join(random.choices(string.ascii_letters + string.digits, k = random.randint(1,10))))
             return cls.arr_result 
