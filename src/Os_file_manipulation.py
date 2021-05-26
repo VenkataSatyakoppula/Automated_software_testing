@@ -15,7 +15,8 @@ class Os_file_manipulation(TestcasesGenerator):
             cls.testcases.write(str(line))
             cls.testcases.write("\n")
         cls.testcases.close()
-        os.startfile("testcases.txt")
+        if limit!=0:
+            os.startfile("testcases.txt")
     @classmethod
     def getpath(cls,testcases,outputs):
         cls.cus_out_path = outputs
@@ -49,8 +50,13 @@ class Os_file_manipulation(TestcasesGenerator):
                 testresult.write("\n")
             os.startfile("TestResult.txt")
             testresult.close()
-        else:
-            pass
+        elif(mode==1):
+            testresult = open("outputs.txt","w")
+            for line in result:
+                    testresult.write(str(line))
+                    # testresult.write("\n")
+            # os.startfile("outputs.txt")
+            
 
         
 

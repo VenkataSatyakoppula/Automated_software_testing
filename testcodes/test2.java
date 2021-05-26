@@ -1,5 +1,6 @@
 class example{  
     public static void main(String args[]){  
-    System.out.println(" "+args[0]+10);  
+    int i= Integer.parseInt(args[0]);
+    System.out.printf("%d\n",i+10);  
     }  
 }  

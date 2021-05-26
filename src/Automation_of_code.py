@@ -14,21 +14,33 @@ class Automation_of_code:
         dest_path= cls.abs_path+"\\"+cls.code_name
         shutil.copyfile(cls.code_path,dest_path)
     @classmethod
-    def execute_code(cls,n):
-        if n==1:
+    def execute_code(cls,testcasespath):
+        ext = os.path.splitext(cls.code_name)[1]
+        if ext==".c":
             subprocess.run("gcc -o "+cls.abs_path+"\\"+str(os.path.splitext(cls.code_name)[0])+" "+cls.abs_path+"\\"+cls.code_name,shell=True)
-        elif n==2:
+        elif ext==".java":
             subprocess.run("javac "+" "+cls.abs_path+"\\"+cls.code_name,shell=True)
-        with open('testcases.txt') as f:
-            lines = [line.rstrip() for line in f]
+        if testcasespath!="":
+            with open(testcasespath) as f:
+                lines = [line.rstrip() for line in f]
+        else:    
+            with open('testcases.txt') as f:
+                lines = [line.rstrip() for line in f]
         l = []
+        l.clear()
         for testcase in lines:
-            if n==1:
+            if ext==".c":
                 p1 =  subprocess.run("./testcodes\\"+str(os.path.splitext(cls.code_name)[0]+" "+testcase),stdout=subprocess.PIPE,text=True)
                 print(p1.stdout)
-            elif n==2:
-                p1 =  subprocess.run("java "+" "+cls.abs_path+"\\"+cls.code_name+" "+testcase,stdout=subprocess.PIPE,text=True,shell=True)
                 l.append(p1.stdout)
-        print(l)
+            elif ext==".java":
+                p1 =  subprocess.run("java "+" "+cls.abs_path+"\\"+cls.code_name+" "+testcase,stdout=subprocess.PIPE,text=True,shell=True)
+                print(p1.stdout)
+                l.append(p1.stdout)
+            elif ext==".py":
+                p1 =  subprocess.run("py -3.8"+" "+cls.abs_path+"\\"+cls.code_name+" "+testcase,stdout=subprocess.PIPE,text=True,shell=True)
+                l.append(p1.stdout)
+        Os_file_manipulation.test_result_in_txt(1,l)
+        
 
 

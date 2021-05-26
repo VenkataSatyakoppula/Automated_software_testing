@@ -105,7 +105,7 @@ class USERINTERFACE:
             def upload():
                 global code_upload
                 #file location giver
-                root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
+                root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("all files","*.*"),("text files","*.txt")))
                 code_upload = root.filename
                 if code_upload == '':
                     uploadBtn['fg'] = 'red'
@@ -143,7 +143,7 @@ class USERINTERFACE:
                 try:
                     int(var.get())
                     constants()
-                    if(int(var.get())<=1000 and int(var.get())>0):
+                    if(int(var.get())<=1000 and int(var.get())>=0):
                         if code_upload !="":
                             Automation_of_code.get_code_path(code_upload)
                             passvalues.append_in_txt(var.get(),sts)
@@ -152,10 +152,11 @@ class USERINTERFACE:
                             tryAgain()
                             raise Exception("Code should be uploaded!!")
                         if testcasesuploads!="" and outputuploads!="":
+                            Automation_of_code.execute_code(testcasesuploads)
                             passvalues.getpath(testcasesuploads,outputuploads)
-                            result = Comparing_values()
-                            result.comparing_values()
-                        Automation_of_code.execute_code(2)
+                            Comparing_values.comparing_values()
+                        else:
+                            Automation_of_code.execute_code("")
                         successpage()
                     else:
                         tryAgain()

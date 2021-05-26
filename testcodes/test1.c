@@ -3,9 +3,8 @@
 #include <string.h>
 
 int main( int argc, char *argv[] )  {
-
    if( argc == 2 ) {
-      printf("The argument supplied is %d\n", atoi(argv[1])+10);
+      printf("%d\n", atoi(argv[1])+10);
    }
    else if( argc > 2 ) {
       printf("Too many arguments supplied.\n");
