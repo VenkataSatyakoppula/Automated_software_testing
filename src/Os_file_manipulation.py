@@ -54,8 +54,9 @@ class Os_file_manipulation(TestcasesGenerator):
             testresult = open("outputs.txt","w")
             for line in result:
                     testresult.write(str(line))
-                    # testresult.write("\n")
-            # os.startfile("outputs.txt")
+                    testresult.write("\n")
+            os.startfile("outputs.txt")
+            testresult.close()
             
 
         

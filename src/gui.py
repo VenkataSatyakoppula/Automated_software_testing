@@ -160,23 +160,11 @@ class USERINTERFACE:
                         successpage()
                     else:
                         tryAgain()
-                    # hello.openFiless(upload)
-                    # if(var.get()==1):
-                    #     successpage()
-                    # else:
-                    #     tryAgain()
                 except TclError:
                     case_entry["fg"] = 'red'
                     data = messagebox.showerror("Value Error","Please enter Number Inputs")
                     if data=="ok":
                         case_entry["fg"] = 'black'
-                    
-                    
-                    
-                #print("upload1")
-                #print("testcasesuploads")
-                #print("outputuploads")
-                #print(entry.get())
             gtrBtn = Button(root, text='Generate',command=gtr,font=("Blod",20),bd=3,fg='black')
             mycanvas.create_window(325,600,anchor=NW,window=gtrBtn,width=200)
 
@@ -205,7 +193,6 @@ class USERINTERFACE:
             mycanvas.create_text(450,450,text= 'SUCCESSFULLY GENERATED ' ,fill='black',font=("Blod",30) )
             refreshBtn = Button(root, text='Refresh',command=refreshfun,font=("Blod",20),bd=3,fg='black')
             mycanvas.create_window(350,550,anchor=NW,window=refreshBtn,width=200)
-            #mycanvas.create_text(450,450,text= str(text) ,fill='black',font=("Blod",30) )
 
         ###############################Try again page###################################
 
@@ -253,6 +240,4 @@ class USERINTERFACE:
             imgback = ImageTk.PhotoImage(Image.open('images\Back42.png'))
             backBtn = Button(root, image=imgback,command=backfun,bd=0,)
             mycanvas.create_window(750,40,anchor=NW,window=backBtn)
-
-
         root.mainloop()

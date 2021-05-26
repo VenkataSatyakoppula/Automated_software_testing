@@ -20,6 +20,8 @@ class Automation_of_code:
             subprocess.run("gcc -o "+cls.abs_path+"\\"+str(os.path.splitext(cls.code_name)[0])+" "+cls.abs_path+"\\"+cls.code_name,shell=True)
         elif ext==".java":
             subprocess.run("javac "+" "+cls.abs_path+"\\"+cls.code_name,shell=True)
+        elif ext ==".cpp":
+            subprocess.run("g++ -o "+cls.abs_path+"\\"+str(os.path.splitext(cls.code_name)[0])+" "+cls.abs_path+"\\"+cls.code_name,shell=True)
         if testcasespath!="":
             with open(testcasespath) as f:
                 lines = [line.rstrip() for line in f]
@@ -40,7 +42,7 @@ class Automation_of_code:
             elif ext==".py":
                 p1 =  subprocess.run("py -3.8"+" "+cls.abs_path+"\\"+cls.code_name+" "+testcase,stdout=subprocess.PIPE,text=True,shell=True)
                 l.append(p1.stdout)
+            elif ext==".cpp":
+                p1 =  subprocess.run("./testcodes\\"+str(os.path.splitext(cls.code_name)[0]+" "+testcase),stdout=subprocess.PIPE,text=True)
+                l.append(p1.stdout)
         Os_file_manipulation.test_result_in_txt(1,l)
-        
-
-

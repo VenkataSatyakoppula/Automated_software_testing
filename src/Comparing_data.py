@@ -13,4 +13,5 @@ class Comparing_values(Os_file_manipulation):
             else:
                 compare_result.append(f"TESTCASE {count+1}({cus_outputs[count]}!={outputs[count]}): FAILED!") 
             count += 1
+        compare_result.append(f"TOTAL Testcases Testested={count}")
         Os_file_manipulation.test_result_in_txt(0,compare_result)

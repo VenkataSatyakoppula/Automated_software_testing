@@ -1,15 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-int main( int argc, char *argv[] )  {
-   if( argc == 2 ) {
-      printf("%d\n", atoi(argv[1])+10);
-   }
-   else if( argc > 2 ) {
-      printf("Too many arguments supplied.\n");
-   }
-   else {
-      printf("One argument expected.\n");
-   }
-}
+#include<stdio.h>    
+#include<stdlib.h>  
+int main(int argc,char *argv[]){  
+int a[10],n,i;
+n = atoi(argv[1]);    
+for(i=0;n>0;i++)    
+{    
+a[i]=n%2;    
+n=n/2;    
+}       
+for(i=i-1;i>=0;i--)    
+{    
+printf("%d",a[i]);    
+}    
+return 0;  
+} 
